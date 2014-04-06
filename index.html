@@ -1,0 +1,212 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Meng Niu</title>
+		<link href="styles/styleweb.css" rel="stylesheet" type="text/css"  media="all" />
+		<link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="scripts/detectmobilebrowser.js"></script>
+		<script type="text/javascript">
+		
+		if (isMobile()) {window.location='mindex.html'}
+		
+		jQuery(document).ready(function($) {
+			var headerHeight = $("div#header").height()+2;
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+
+				var parent = $(this).parent();
+				siblings = parent.siblings(),
+				isOn = parent.toggleClass('active').hasClass('active');
+				siblings.toggleClass('active', !isOn);
+
+				var scrollToPosition = $(this.hash).offset().top-headerHeight;
+				$('html,body').animate({scrollTop:scrollToPosition},400);
+
+			});
+
+			var topMenu = $("#top-nav");
+			topMenuHeight = topMenu.outerHeight()+15;
+			menuItems = topMenu.find("a");
+			scrollItems = menuItems.map(function(){
+					var item = $($(this).attr("href"));
+					if (item.length) { return item; }
+				});		
+
+		});
+		// Bind to scroll
+		$(window).scroll(function() {
+			// Get container scroll position
+			var fromTop = $(this).scrollTop()+topMenuHeight;
+			// Get id of current scroll item
+			// var cur = scrollItems.map(function() {
+			// 	if ($(this).offset().top < fromTop)
+			// 		return this;
+			// });
+			// Get the id of the current element
+			// cur = cur[cur.length-1];
+
+			var distance = scrollItems.map(function() {
+					return Math.abs($(this).offset().top - fromTop);
+			});
+
+			cur = scrollItems[distance.index(Math.min.apply(Math, distance))];
+
+			var id = cur && cur.length ? cur[0].id : "me";
+			// Set/remove active class
+			menuItems
+				.parent().removeClass("active")
+				.end().filter("[href=#"+id+"]").parent().addClass("active");
+			});
+		</script>
+	</head>
+	<body>
+		<!-- start-wrap -->
+		<!-- start-header -->
+	<div id="header" class="header">
+		<div class="wrap">
+			<!-- start-logo -->
+			<div class="logo">
+				<a href="#" alt="牛猛">Meng Niu</a> 
+			</div>
+			<!-- End-logo -->
+			<!-- start-top-nav -->
+			<div class="top-nav">
+				<ul id="top-nav">
+					<li class="active"><a href="#me" class="scroll">Me</a></li>
+					<li><a href="#education" class="scroll">Education</a></li>
+					<li><a href="#publication" class="scroll">Publications</a></li>
+					<li><a href="#links" class="scroll">Links</a></li>
+				</ul>
+			</div>
+			<div class="clear"> </div>
+			<!-- End-top-nav -->
+	     </div>
+	</div>
+		<!-- End-wrap -->
+	<div id="content" class="content">
+		<div class="grid1" id="me">
+			<a href="#"><img src="images/sand.png" title="Ehsan" /></a>
+			<h3>Meng Niu</h3>
+			<p>
+			My primary fields of interests are modeling, algorithms and Bioinformatics. I tend to approach the real world biological problems through a computational viewpoint.
+
+			</p>
+			<div>
+				<p>
+				Currently, I am doing research in Dr. Zhengchang Su's lab. My focus is on the transcriptional complexity in bacterial genome. I started my research by looking at the properties and structures of <a href="http://en.wikipedia.org/wiki/Operon" target="_blank">operons</a>. Then I will be looking into alternative operon structures in <i>E. coli</i>. To do so, I'm investigating the methods to detect and correct existing bias in the RNA-Seq experiment results.
+	        	</p> 
+        	</div>
+        	<p class="twiiter-box"><a class="button" href="mydocs/Ehsan_Tabari_CV.pdf">Download CV</a></p>
+		</div>
+		<div class="grid2" id="education">
+			<h3>Education</h3>
+			<ul>
+				<li>
+					<p>PhD, Bioinformatics<br>
+					<a href="http://bioinformatics.uncc.edu" target="_blank">University of North Carolina at Charlotte, 2015</a>
+					<p>
+				</li>
+				<li>
+					<p>MS, Computer Science <br>
+					<a href="http://en.wikipedia.org/wiki/University_of_Tehran" target="_blank">University of Tehran, 2006</a>
+					</p>
+				</li>
+				<li>
+					<p>BS, Software Engineering<br>
+					<a href="http://en.wikipedia.org/wiki/Shahid_Beheshti_University" target="_blank">Shahid Beheshti University, Tehran, 2003</a>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="grid22" id="publication">
+			<h3>Publications</h3>
+			<ul>
+				<li>
+					<p><!--Christopher C Overall, D Andrew Carr, Ehsan S Tabari, Kevin J Thompson and Jennifer W Weller: --> <br><b>ArrayInitiative - a tool that simplifies creating custom Affymetrix CDFs</b><br>
+					<a href="http://www.biomedcentral.com/1471-2105/12/136" target="_blank">BMC Bioinformatics 2011, 12:136</a>
+					<p>
+				</li>
+				<li>
+					<p><!--E. Seyedi-Tabari, H. Ahrabian and A. Nowzari-Dalini: --><br><b>A new algorithm for generation of different types of RNA</b> <br>
+					<a href="http://www.tandfonline.com/doi/full/10.1080/00207160802140049" target="_blank">Int. J of Comp Math
+Vol. 87, Iss. 6, 2010</a>
+					</p>
+				</li>
+				<li>
+					<p><br><b>Masters Thesis Abstract</b><br>
+					<a href="http://etabari.com/mydocs/Ehsan_Tabari_thesisa.pdf" target="_blank">pdf</a>
+					</p>
+				</li>
+				<li>
+					<p><br><b>Master Thesis Full Text (In Farsi)</b><br>
+					<a href="http://etabari.com/mydocs/Ehsan_Tabari_thesis.pdf" target="_blank" >pdf</a>
+					</p>
+				</li>
+			</ul>
+		</div>
+		<div class="grid2col" id="links">
+			<h3>Links</h3>
+			<ul>
+				<li>
+					<div><b>Dr. Su's Lab</b><br>
+						I'm doing my PhD in here.<br>
+					<p><a href="http://sulab.uncc.edu/" target="_blank">here</a></p>
+					</div>
+				</li>
+				<li>
+					<div><b>Integrated Genome Browser</b><br>
+						I contributed to igB in 2010.<br>
+					<p><a href="http://igb.genoviz.org/" target="_blank">here</a></p>
+					</div>
+				</li>
+				<li>
+					<div><b>NC Research Campus</b><br>
+						I worked in NCRC in 2010.<br>
+					<p><a href="http://www.ncresearchcampus.net/" target="_blank">here</a></p>
+					</div>
+				</li>
+				<li>
+					<div><b>miniMiner</b><br>
+					A Phylogenetic motifs (PMs) predicttion tool.<br>
+					<p><a href="http://miniminer.sourceforge.net/" target="_blank">here</a></p>
+					</div>
+				</li>
+				<li>
+					<div><b>My blog on User interface</b><br>
+					<p><a href="http://blog.etabari.com" target="_blank">here</a></p>
+					</div>
+				</li>
+				<li>
+					<div><b>My mobile phone apps are listed</b><br>
+					<p><a href="http://etabari.com/winphone/" target="_blank">here</a></p>
+					</div>
+				</li>
+			</ul>
+		</div>
+  <!--
+		<div class="catch-me">
+			<h3>I'M SOCIAL</h3>
+			<p>How about follow me in social media?</p>
+			<ul>
+				<li><a href="#"><img src="images/facebook.png" title="facebook" /></a></li>
+				<li><a href="#"><img src="images/rss.png" title="Rss" /></a></li>
+				<li><a href="#"><img src="images/googlepluse.png" title="Googlepluse" /></a></li>
+				<li><a href="#"><img src="images/twitt.png" title="Twitter" /></a></li>
+			</ul>
+		</div>
+	-->
+		<div class="footer">
+			<p><!--Seyed Ehsan Seyedi Tabari--> Contact: sseyedit@uncc.edu</p>
+		</div>
+	</div>
+
+	</body>
+</html>
+
